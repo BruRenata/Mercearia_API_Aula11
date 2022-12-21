@@ -1,16 +1,18 @@
 ﻿using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using System.Collections.Generic;
 
 namespace Mercearia_Produtos_API.Controllers
 {
-    public class ClienteController
+    public class ClienteController : ControllerBase
     {
         private ClienteService clienteService = new ClienteService();
 
         [HttpGet]
         [Route("[controller]")]
+        [Authorize]
         public IEnumerable<Cliente> GetAll()
         {
             return clienteService.GetAll();
@@ -18,6 +20,7 @@ namespace Mercearia_Produtos_API.Controllers
 
         [HttpGet]
         [Route("[controller]/{id}")]
+        [Authorize]
         public Cliente Get(int id)
         {
             return clienteService.GetById(id);
@@ -25,6 +28,7 @@ namespace Mercearia_Produtos_API.Controllers
 
         [HttpPost]
         [Route("[controller]")]
+        [Authorize]
         public void Create([FromBody] Cliente cliente)
         {
             clienteService.Create(cliente);
@@ -32,6 +36,7 @@ namespace Mercearia_Produtos_API.Controllers
 
         [HttpPut]
         [Route("[controller]")]
+        [Authorize]
         public void Update([FromBody] Cliente cliente)
         {
             clienteService.Update(cliente);   
@@ -39,6 +44,7 @@ namespace Mercearia_Produtos_API.Controllers
 
         [HttpDelete]
         [Route("[controller]/{id}")]
+        [Authorize]
         public void DeleteByID(int id)
         {
             clienteService.DeleteByID(id);

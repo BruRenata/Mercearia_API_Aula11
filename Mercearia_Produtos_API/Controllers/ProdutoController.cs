@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Mercearia_Produtos_API.Controllers
 {
-    public class ProdutoController
+    public class ProdutoController : ControllerBase
     {
 
         private ProdutoService produtoService = new ProdutoService();
